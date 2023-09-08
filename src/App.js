@@ -1,12 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { Route, Routes, BrowserRouter } from 'react-router-dom';
+import Home from './page/Home';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <h1>Hello ZOOMINFO_DRIVE_UI</h1>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
