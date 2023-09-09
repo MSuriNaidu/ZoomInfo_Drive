@@ -5,6 +5,7 @@ import SearchBar from '../components/SearchBar';
 import FileTable from '../components/FileTable';
 import dummyData from '../data/dummyData.json';
 
+
 const Home = () => {
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);

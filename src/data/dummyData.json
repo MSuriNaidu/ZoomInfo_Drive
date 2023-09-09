@@ -13,6 +13,11 @@
       "name": "File 2.txt",
       "size": "4 MB",
       "lastModified": "2023-09-01"
+    },
+    {
+      "name": "File 3.pdf",
+      "size": "3.3 KB",
+      "lastModified": "1010-10-10"
     }
   ]
   
