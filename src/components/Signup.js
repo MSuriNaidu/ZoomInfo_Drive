@@ -25,7 +25,7 @@ function Signup() {
         </form>
         <Typography variant="body2" color="textSecondary" align="center">
           Already have an account?{' '}
-          <Link component={RouterLink} to="/login">
+          <Link component={RouterLink} to="/">
             Login
           </Link>
         </Typography>

@@ -24,7 +24,9 @@ function Login() {
             type="password"
           />
           <Button variant="contained" color="primary" fullWidth>
-            Login
+            <Link component={RouterLink} to="/">
+                Login
+            </Link>
           </Button>
         </form>
         <Typography variant="body2" color="textSecondary" align="center">
