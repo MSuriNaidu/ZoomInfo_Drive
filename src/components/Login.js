@@ -23,10 +23,8 @@ function Login() {
             margin="normal"
             type="password"
           />
-          <Button variant="contained" color="primary" fullWidth>
-            <Link component={RouterLink} to="/">
+          <Button variant="contained" sx={{color:'white'}} fullWidth>
                 Login
-            </Link>
           </Button>
         </form>
         <Typography variant="body2" color="textSecondary" align="center">
