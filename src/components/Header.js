@@ -4,6 +4,8 @@ import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import styled from '@emotion/styled';
 import { Menu, MenuItem } from '@mui/material';
 import FolderCreator from './FolderCreator';
+import FileUploader from './FileUploader';
+import FolderUploader from './FolderUploader';
 
 const useStyles = styled((theme) => ({
   appBar: {
@@ -13,18 +15,24 @@ const useStyles = styled((theme) => ({
     flexGrow: 1,
     marginLeft: theme.spacing(2),
   },
-}));
+  }));
 
 const Header = () => {
 
     const [anchorEl, setAnchorEl] = useState(null);
 
-    const [files, setFiles] = useState([]);
     const [folders, setFolders] = useState([]);
+    const [uploadedFiles, setUploadedFiles] = useState([]);
+    const [uploadedFolders, setUploadedFolders] = useState([]);
   
-    const createFile = (fileName) => {
-      setFiles([...files, fileName]);
+    const handleFileUpload = (file) => {
+      setUploadedFiles([...uploadedFiles, file.name]);
     };
+  
+    const handleFolderUpload = (folderName) => {
+      setUploadedFolders([...uploadedFolders, folderName]);
+    };
+  
   
     const createFolder = (folderName) => {
       setFolders([...folders, folderName]);
@@ -44,21 +52,22 @@ const Header = () => {
     };
 
     const handlFolderUpload = () => {
-        alert('create a new folder');  
-        setAnchorEl(null);
+      alert("folder upload");
+        //setAnchorEl(null);
+        <FolderUploader onFolderUpload={handleFolderUpload} />
       };
 
       const handleNewFileUpload = () => {
-        alert('create a new folder');  
         setAnchorEl(null);
+        <FileUploader onFileUpload={handleFileUpload} />
       };
   
   const classes = useStyles();
 
   return (
     <AppBar position="static" className={classes.appBar}>
-        <FolderCreator onCreateFolder={createFolder} />
       <Toolbar>
+      {/* <img src="ZoomInfo_Z_Logo.jpg" alt="logo" style={{maxWidth: '120px'}} /> */}
         <Typography variant="h6" className={classes.title}>
           My Drive
         </Typography>
@@ -71,8 +80,8 @@ const Header = () => {
         onClose={handleClose}
       >
         <MenuItem> <FolderCreator onCreateFolder={createFolder} /></MenuItem>
-        <MenuItem variant= "outline" onClick={handlFolderUpload}>Folder Upload</MenuItem>
-        <MenuItem onClick={handleNewFileUpload}>File Upload</MenuItem>
+        <MenuItem> <FileUploader onFileUpload={handleFileUpload} /></MenuItem>
+        <MenuItem>  <FolderUploader onFolderUpload={handleFolderUpload} /></MenuItem>
       </Menu>
       <Typography sx={{paddingLeft:'1010px'}}>
         MSuriNaidu
