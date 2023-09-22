@@ -1,10 +1,9 @@
 import React, {useState} from 'react';
 import { AppBar, Toolbar, Typography, Button } from '@mui/material';
-import { Drawer, List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import styled from '@emotion/styled';
-import { RampRight } from '@mui/icons-material';
 import { Menu, MenuItem } from '@mui/material';
+import FolderCreator from './FolderCreator';
 
 const useStyles = styled((theme) => ({
   appBar: {
@@ -19,6 +18,17 @@ const useStyles = styled((theme) => ({
 const Header = () => {
 
     const [anchorEl, setAnchorEl] = useState(null);
+
+    const [files, setFiles] = useState([]);
+    const [folders, setFolders] = useState([]);
+  
+    const createFile = (fileName) => {
+      setFiles([...files, fileName]);
+    };
+  
+    const createFolder = (folderName) => {
+      setFolders([...folders, folderName]);
+    };
 
     const handleClick = (event) => {
       setAnchorEl(event.currentTarget);
@@ -47,6 +57,7 @@ const Header = () => {
 
   return (
     <AppBar position="static" className={classes.appBar}>
+        <FolderCreator onCreateFolder={createFolder} />
       <Toolbar>
         <Typography variant="h6" className={classes.title}>
           My Drive
@@ -59,19 +70,10 @@ const Header = () => {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <MenuItem onClick={handleNewFolder}>New Folder</MenuItem>
-        <MenuItem onClick={handlFolderUpload}>Folder Upload</MenuItem>
+        <MenuItem> <FolderCreator onCreateFolder={createFolder} /></MenuItem>
+        <MenuItem variant= "outline" onClick={handlFolderUpload}>Folder Upload</MenuItem>
         <MenuItem onClick={handleNewFileUpload}>File Upload</MenuItem>
       </Menu>
-        {/* <List>
-        <ListItem button key="New">
-          <ListItemIcon>
-            <AddCircleOutlineIcon />
-          </ListItemIcon>
-          <ListItemText primary="New" />
-        </ListItem>
-        {/* Add more menu items here 
-      </List> */}
       <Typography sx={{paddingLeft:'1010px'}}>
         MSuriNaidu
       </Typography>
